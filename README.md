@@ -16,8 +16,8 @@ Deploy a PyTorch-pretrained neural style transfer to Android mobile using TFLite
 ```
 cd ./conversion_scripts
 pip install -r requirements.txt
-python convert.py --torch_model_path="./pytorch_models/rain_princess.pth" \
-                  --tflite_model_path="./tflite_models/rain_princess.tflite"
+python convert.py --torch_model_path="../models/pytorch_models/rain_princess.pth" \
+                  --tflite_model_path="../models/tflite_models/rain_princess.tflite"
 ```
 
 - For details of the process please checkout [conversion_scripts/convert.ipynb](conversion_scripts/convert.ipynb)

@@ -1,7 +1,9 @@
 import torch
 from torchvision import transforms
 import tensorflow as tf
-from pytorch_models.model_arch import TransformerNet
+import sys
+sys.path.append("../")
+from models.pytorch_models.model_arch import TransformerNet
 import onnx
 import onnxruntime
 import argparse
@@ -9,8 +11,7 @@ import subprocess
 
 def torch_to_onnx(torch_model_path, onnx_model_path):
     print("Converting to onnx ...")
-    model_checkpoint = "./pytorch_models/rain_princess.pth"
-    state_dict = torch.load(model_checkpoint)
+    state_dict = torch.load(torch_model_path)
 
     keys_to_del = []
 
@@ -97,8 +98,8 @@ def main():
 
     args = arg_parser.parse_args()
     torch_model_path = args.torch_model_path
-    onnx_model_path = "./temp/rain_princess.onnx"
-    tf_model_path = "./temp/rain_princess.pb"
+    onnx_model_path = "../models/temp/rain_princess.onnx"
+    tf_model_path = "../models/temp/rain_princess.pb"
     tflite_model_path = args.tflite_model_path
     quantization = args.quantization
     
